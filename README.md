@@ -31,10 +31,32 @@
 - When we talk about flat folder structure combined with uncle bob's screaming architecture (the architecture should scream the intent of the business) we get functional organization (organize by feature).
 
 
-## CI    
+## CI
+### overview of steps:
+- setup a root pipeline:
+  - this pipeline is defined to ignore changes in the apps. it will only run when shared code get changed, if a service get's affected by the change it should run it's pipeline as well.
+- setup a pipelines in each app and triggered by changes in those apps.
+  - very simple for each app create it's own pipeline.
+- rename pipelines in DevOps UI.
+- use triggers.
+- change working directories.
 
+### challenges 
+The more code you add to the monorepo, the slower the CI might get.
+More about that in Critique section.
 
+### CI the NX way
+There are 2 approaches: 
+- Root pipeline and pipeline for each app:
+  - we setup a root pipeline, for each docker image.
+  - we setup a pipeline in each app that get's triggered by changes in those folder.
+  - rename the pipelines in Devops UI.
+  - use trigger.
+  - change working directories.
+  - visit https://github.com/julie-ng/azure-pipelines-monorepo for more info.
 
+- Single pipeline:
+  - let NX take care of rebuilding what needs to be rebuild.
 ## monorepo, a critique.
 
 
