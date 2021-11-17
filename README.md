@@ -20,23 +20,29 @@
 - Use a single version of all third-party dependencies, reducing inconsistencies between applications. 
 - Less actively developed applications are still kept up-to-date with the latest version of a framework, library, or build tool.
 
-## folder organiztion
+## folder organization
 
 ### LIFT principle (Locate, Identify, Flattest structure, Try to be Dry)
 - in short terms:
     - Make locating intuitive & fast.
     - Naming files s.t they communicate content.
     - Keep folder structure as flat as possible
-- 
-- When we talk about flat folder structure compined with uncle bob's scremaing architecure (the architecure should scream the intent of the business) we get functional organiztion (organize by feature).
+
+- When we talk about flat folder structure combined with uncle bob's screaming architecture (the architecture should scream the intent of the business) we get functional organization (organize by feature).
+
+
+## CI    
+
 
 
 ## monorepo, a critique.
 
-## nx folder structure
+
+## NX
+### nx folder structure.
 - the apps folder should be as light-weight as possible
 - all the heavy lifting should be in the libs folder
 - the tools folder is for script that acts on your code, like database script(seeding for ex), deploy scripts, ..
 - nx.json and workspaces.json helps nx how your apps and libs relate to each other.
-        
+
         
