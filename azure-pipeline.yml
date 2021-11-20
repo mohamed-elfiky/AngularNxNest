@@ -5,11 +5,11 @@ trigger:
   branches:
     include:
       - master
-      - feat/*
+      - release/*
   paths:
     exclude:
-      - 'service-a/*'
-      - 'service-b/*'
+      - 'demo/*'
+      - 'api/*'
 
 pool:
   vmImage: 'ubuntu-latest'
