@@ -8,7 +8,7 @@ trigger:
       - release/*
   paths:
     include:
-      - 'api/*'
+      - 'apps/api/*'
 
 pool:
   vmImage: 'ubuntu-latest'

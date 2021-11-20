@@ -8,8 +8,8 @@ trigger:
       - release/*
   paths:
     exclude:
-      - 'demo/*'
-      - 'api/*'
+      - 'apps/demo/*'
+      - 'apps/api/*'
 
 pool:
   vmImage: 'ubuntu-latest'
