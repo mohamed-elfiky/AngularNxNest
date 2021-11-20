@@ -1,0 +1,18 @@
+# Build numbering format
+name: $(BuildID)
+
+trigger:
+  branches:
+    include:
+      - master
+      - release/*
+  paths:
+    include:
+      - 'api/*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - script: |
+      echo "Hello from 'api'"
