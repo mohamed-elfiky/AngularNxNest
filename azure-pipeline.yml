@@ -37,9 +37,8 @@ stages:
     - task: Docker@2
       displayName: "Build and push base image to ACR"
       inputs:
-        command: buildAndPush
-        repository: $(RepositoryName)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(ACRConnection)
-        tags: |
-          $(tag)
+        containerRegistry: 'test'
+        repository: '$(RepositoryName)'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
