@@ -40,6 +40,6 @@ stages:
         command: buildAndPush
         repository: $(RepositoryName)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        containerRegistry: $(ACRConnection)
         tags: |
           $(tag)
