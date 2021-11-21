@@ -27,6 +27,7 @@ stages:
       inputs:
         versionSpec: '12.x'
       displayName: 'Install Node.js'
+    
     - script: npm install -g jest-cli @nrwl/cli
   
     - bash: |
