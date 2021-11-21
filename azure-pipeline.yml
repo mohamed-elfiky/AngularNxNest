@@ -38,7 +38,7 @@ stages:
       displayName: "Build and push base image to ACR"
       inputs:
         command: buildAndPush
-        repository: $(imageRepository)
+        repository: $(RepositoryName)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
