@@ -23,7 +23,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - bash@4: |
+    - bash: |
         declare -A arr
         for i in $(nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
           arr[$i]=$i
