@@ -42,7 +42,7 @@ stages:
       displayName: get affected apps
     - bash: |
         echo '$(Build.BuildId)'
-        echo '$(BuildAPI)'
+        echo '$(variables.BuildAPI)'
 
     # - task: Docker@2
     #   displayName: "Build and push base image to ACR"
