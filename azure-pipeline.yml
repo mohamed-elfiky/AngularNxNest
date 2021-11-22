@@ -23,6 +23,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    
     - task: NodeTool@0
       inputs:
         versionSpec: '12.x'
@@ -57,7 +58,7 @@ stages:
         script: |
           nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' 
           declare -A arr
-                  for i in $(nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
+                  for i in $(nx affected:apps --base=HEAD~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
                     arr[$i]=$i
                     echo $arr
                     echo 'hereo'
