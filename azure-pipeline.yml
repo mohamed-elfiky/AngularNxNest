@@ -30,7 +30,7 @@ stages:
     
     - script: npm install -g jest-cli @nrwl/cli
   
-    - script: |
+    - bash@3: |
         declare -A arr
         for i in $(nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
           arr[$i]=$i
