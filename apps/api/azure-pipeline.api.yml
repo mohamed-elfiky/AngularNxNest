@@ -1,6 +1,3 @@
-# Build numbering format
-name: $(BuildID)
-
 variables:
   ACRConnection: 'g4sxJoO6VMx/xHRLY4P5=Q9vXvFsvByY'
   RepositoryName: 'ps_catalog_api'
@@ -11,7 +8,7 @@ variables:
 trigger:
   branches:
     include:
-      - main
+      # - main
       - release_api/*
   paths:
     include:
