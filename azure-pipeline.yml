@@ -36,11 +36,11 @@ stages:
           arr[$i]=$i
         done
 
-        if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI;isOutput=true]'True'" name: base; fi
-        if [[ ${arr['demo']} ]]; then echo "##vso[task.setvariable variable=BuildDemo; isOutput=true ]'True'" name: base; fi
+        if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI;isOutput=true]'True'"; fi
+        if [[ ${arr['demo']} ]]; then echo "##vso[task.setvariable variable=BuildDemo; isOutput=true ]'True'"; fi
     - base: |
-        echo '$(base.BuildAPI)';
-        echo '$(base.BuildDemo)';
+        echo '$(BuildAPI)';
+        echo '$(BuildDemo)';
 
       displayName: get affected apps
 
@@ -56,7 +56,7 @@ stages:
   - job: 'API pipeline'
     dependsOn: baseImage
     variables: 
-      affected: $ [dependencies.baseImage.outputs['base.BuildAPI']]
+      affected: $ [dependencies.baseImage.outputs['BuildAPI']]
     condition: and(succeeded(), eq(variables.affected, 'True'))
     steps:  
       - bash: | 
