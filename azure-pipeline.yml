@@ -35,7 +35,7 @@ stages:
           
           npm install -g jest-cli @nrwl/cli
           npm i
-          nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g'
+          nx affected:apps --base=origin/main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g'
           
           ls -al
           nx
