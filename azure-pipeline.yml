@@ -34,12 +34,13 @@ stages:
         declare -A arr
         for i in $(nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
           arr[$i]=$i
+          echo $arr
         done
 
         if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI;]True"; fi
         if [[ ${arr['demo']} ]]; then echo "##vso[task.setvariable variable=BuildDemo;]True"; fi
        
-        echo '$BuildAPI'
+        echo $BuildAPI
 
       displayName: get affected apps
    
