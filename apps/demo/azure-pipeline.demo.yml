@@ -1,11 +1,19 @@
 # Build numbering format
 name: $(BuildID)
 
+variables:
+  ACRConnection: 'g4sxJoO6VMx/xHRLY4P5=Q9vXvFsvByY'
+  RepositoryName: 'ps_catalog_demo'
+  ACRName: 'testingintouch.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/apps/demo/Dockerfile'
+  tag: 'r$(Build.SourceBranchName).n$(Build.BuildNumber).i$(Build.BuildId)'
+
+
 trigger:
   branches:
     include:
       - main
-      - release/*
+      - release_demo/*
   paths:
     include:
       - 'apps/demo/*'
@@ -14,5 +22,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - script: |
-      echo "Hello from 'demo'"
+  task: Docker@2
+  displayName: "Build and push base image to ACR"  
+  inputs:
+    containerRegistry: 'test'
+    repository: '$(RepositoryName)'
+    command: 'buildAndPush'
+    Dockerfile: '$(dockerfilePath)'
+    tags: '$(tag)'
