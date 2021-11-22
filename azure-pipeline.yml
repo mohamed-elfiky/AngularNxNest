@@ -19,7 +19,7 @@ stages:
 - stage: 'Build'
   displayName: 'Build and push'
   jobs: 
-  - job: baseImage
+  - job: base_image
     pool:
       vmImage: 'ubuntu-latest'
     steps:
@@ -53,10 +53,10 @@ stages:
     #     Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
     #     tags: '$(tag)'
   
-  - job: 'API pipeline'
-    dependsOn: baseImage
+  - job: 'API'
+    dependsOn: base_image
     variables: 
-      affected: $ [dependencies.baseImage.outputs['BuildAPI']]
+      affected: $ [dependencies.base_image.outputs['BuildAPI']]
     condition: and(succeeded(), eq(variables.affected, 'True'))
     steps:  
       - bash: | 
