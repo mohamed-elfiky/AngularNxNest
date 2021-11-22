@@ -30,17 +30,17 @@ stages:
     
     - script: npm install -g jest-cli @nrwl/cli
   
-    - bash@3: |
+    - bash: |
         declare -A arr
         for i in $(nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
           arr[$i]=$i
         done
-        $True = 'True'
-        if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI; isOutput=true]$($True)"; fi
-        if [[ ${arr['demo']} ]]; then echo "##vso[task.setvariable variable=BuildDemo; isOutput=true ]$($True)"; fi
+
+        if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI; isOutput=true]True"; fi
+        if [[ ${arr['demo']} ]]; then echo "##vso[task.setvariable variable=BuildDemo; isOutput=true ]True"; fi
     
-        echo '$(variables.BuildAPI)'
-        echo '$(variables.BuildDemo)'
+        echo $(BuildAPI)
+        echo $(BuildDemo)
 
       displayName: get affected apps
 
