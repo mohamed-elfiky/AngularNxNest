@@ -34,11 +34,11 @@ stages:
         script: |
           pwd 
           npm i
-          nx affected:apps --base=origin/main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g'
+          npx nx affected:apps --base=origin/main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g'
           
           ls -al
           declare -A arr
-                  for i in $(nx affected:apps --base=HEAD~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
+                  for i in $(npx nx affected:apps --base=HEAD~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
                     arr[$i]=$i
                     echo $arr
                   done
@@ -53,7 +53,7 @@ stages:
         script: |
           nx affected:apps --base=main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' 
           declare -A arr
-                  for i in $(nx affected:apps --base=remote/origin/main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
+                  for i in $(npx nx affected:apps --base=remote/origin/main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
                     arr[$i]=$i
                     echo $arr
                     echo 'hereo'

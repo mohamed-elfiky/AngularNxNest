@@ -56,8 +56,7 @@ There are 2 approaches:
 - Single pipeline:
   - let NX take care of rebuilding what needs to be rebuild.
 ## monorepo, a critique.
-
-
+- TBD
 ## NX
 ### nx folder structure.
 - the apps folder should be as light-weight as possible
