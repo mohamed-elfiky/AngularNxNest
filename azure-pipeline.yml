@@ -4,8 +4,8 @@ variables:
   ACRName: 'testingintouch.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: 'r$(Build.SourceBranchName).n$(Build.BuildNumber).i$(Build.BuildId)'
-  BuildAPI: 'False'
-  BuildAngular: 'False'
+  BuildAPI: $[False]
+  BuildAngular: $[False]
   
 trigger:
   branches:
