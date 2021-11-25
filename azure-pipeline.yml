@@ -4,7 +4,9 @@ variables:
   ACRName: 'testingintouch.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: 'r$(Build.SourceBranchName).n$(Build.BuildNumber).i$(Build.BuildId)'
-
+  BuildAPI: 'False'
+  BuildAngular: 'False'
+  
 trigger:
   branches:
     include:
@@ -45,7 +47,7 @@ stages:
                   done
 
                   if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI;]True"; fi
-                  if [[ ${arr['demo']} ]]; then echo "##vso[task.setvariable variable=BuildDemo;]True"; fi
+                  if [[ ${arr['angular']} ]]; then echo "##vso[task.setvariable variable=BuildAngular;]True"; fi
                  
                   echo $BuildAPI
                   echo 'done'
@@ -64,9 +66,7 @@ stages:
    
   - job: 'API'
     dependsOn: base_image
-    variables:
-      someVal: $[dependencies.base_image.outputs['BuildAPI']]
-    condition: and(succeeded(), eq( $someVal , 'True'))
+    condition: and(succeeded(), eq( $[BuildAPI] , 'True'))
     steps:  
       - bash: | 
           echo 'run'
