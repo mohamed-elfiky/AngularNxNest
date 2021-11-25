@@ -69,4 +69,4 @@ stages:
     condition: and(succeeded(), eq( $[BuildAPI] , 'True'))
     steps:  
       - bash: | 
-          echo 'run'
+          echo $(someVal)
