@@ -46,7 +46,7 @@ stages:
                     echo $i
                   done
 
-                  if [[ ${arr['api']} ]]; then echo 'here'; fi
+                  if [[ ${arr['api']} ]]; then variables.BuildApi= 'True'; fi
                   if [[ ${arr['angular']} ]]; then echo "##vso[task.setvariable variable=BuildAngular;]True"; fi
                  
                   echo $BuildAPI
