@@ -50,7 +50,7 @@ stages:
                   if [[ ${arr['angular']} ]]; then echo "##vso[task.setvariable variable=BuildAngular;]True"; fi
                  
                   echo $BuildAPI
-                  echo 'done'
+                  echo 'done!'
 
       displayName: get affected apps
    
