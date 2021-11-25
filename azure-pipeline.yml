@@ -64,7 +64,9 @@ stages:
    
   - job: 'API'
     dependsOn: base_image
-    condition: and(succeeded(), eq( dependencies.base_image.outputs['BuildAPI'] , 'True'))
+    variables:
+      someVal: $[dependencies.base_image.outputs['BuildAPI']]
+    condition: and(succeeded(), eq( $someval , 'True'))
     steps:  
       - bash: | 
           echo 'run'
