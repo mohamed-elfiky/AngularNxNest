@@ -64,5 +64,3 @@ There are 2 approaches:
 - all the heavy lifting should be in the libs folder
 - the tools folder is for script that acts on your code, like database script(seeding for ex), deploy scripts, ..
 - nx.json and workspaces.json helps nx how your apps and libs relate to each other.
-
-        
