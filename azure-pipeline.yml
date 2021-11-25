@@ -41,7 +41,7 @@ stages:
           declare -A arr
                   for i in $(npx nx affected:apps --base=remotes/origin/main~1 --head=HEAD |  grep -E ' - (\w|-|\d|_)+'  | sed -E 's/ - / /g' ); do
                     arr[$i]=$i
-                    echo $arr
+                    echo $i
                   done
 
                   if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI;]True"; fi
