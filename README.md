@@ -32,14 +32,12 @@
 
 
 ## CI
+
 ### overview of steps:
-- setup a root pipeline:
-  - this pipeline is defined to ignore changes in the apps. it will only run when shared code get changed, if a service get's affected by the change it should run it's pipeline as well.
-- setup a pipelines in each app and triggered by changes in those apps.
-  - very simple for each app create it's own pipeline.
-- rename pipelines in DevOps UI.
-- use triggers.
-- change working directories.
+- A root pipeline will be triggered with any change in the monorepo.
+- The root pipeline shall detect the affected apps, and it will trigger their pipelines accordingly.
+- The root pipeline dockerizes a base image that contain the src (apps, libs) and the installed packages.
+- Each app pipeline dokereizes it's own image and pull the base image from the registry.
 
 ### challenges 
 The more code you add to the monorepo, the slower the CI might get.
