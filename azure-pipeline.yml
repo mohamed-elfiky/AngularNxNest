@@ -12,10 +12,10 @@ trigger:
     include:
       - main
       - release/*
-  paths:
-    exclude:
-      - 'apps/demo/*'
-      - 'apps/api/*'
+  # paths:
+  #   exclude:
+  #     - 'apps/demo/*'
+  #     - 'apps/api/*'
 
 stages: 
 - stage: 'Build'
