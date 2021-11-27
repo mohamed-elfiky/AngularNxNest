@@ -5,15 +5,6 @@ variables:
   dockerfilePath: '$(Build.SourcesDirectory)/apps/api/Dockerfile'
   tag: 'r$(Build.SourceBranchName).n$(Build.BuildNumber).i$(Build.BuildId)'
 
-trigger:
-  branches:
-    include:
-      # - main
-      - release_api/*
-  paths:
-    include:
-      - 'apps/api/*'
-
 pool:
   vmImage: 'ubuntu-latest'
 

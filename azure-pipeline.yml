@@ -46,18 +46,17 @@ stages:
       displayName: get affected apps
    
 
-    # - task: Docker@2
-    #   displayName: "Build and push base image to ACR"
-    #   inputs:
-    #     containerRegistry: 'test'
-    #     repository: '$(RepositoryName)'
-    #     command: 'buildAndPush'
-    #     Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-    #     tags: '$(tag)'
+    - task: Docker@2
+      displayName: "Build and push base image to ACR"
+      inputs:
+        containerRegistry: 'test'
+        repository: '$(RepositoryName)'
+        command: 'buildAndPush'
+        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: '$(tag)'
    
   - job: 'API'
     dependsOn: base_image
     condition: and(succeeded(), eq( dependencies.base_image.outputs['affected.BuildAPI'] , 'True'))
     steps:  
-      - bash: | 
-          echo $(someVal)
+      - template: apps/api/azure-pipeline.api.yml
