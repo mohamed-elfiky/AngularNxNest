@@ -8,12 +8,19 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-  task: Docker@2
-  displayName: "Build and push base image to ACR"  
-  inputs:
-    containerRegistry: 'test'
-    repository: '$(RepositoryName)'
-    command: 'buildAndPush'
-    Dockerfile: '$(dockerfilePath)'
-    tags: '$(tag)'
+stages: 
+- stage: 'Build'
+  displayName: 'Build and push'
+  jobs: 
+  - job: api_build
+    pool:
+      vm: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      displayName: "Build and push base image to ACR"  
+      inputs:
+        containerRegistry: 'test'
+        repository: '$(RepositoryName)'
+        command: 'buildAndPush'
+        Dockerfile: '$(dockerfilePath)'
+        tags: '$(tag)'
