@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'ui',
+  displayName: 'material',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/ui',
+  coverageDirectory: '../../coverage/libs/material',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },

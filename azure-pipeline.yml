@@ -41,7 +41,7 @@ stages:
                   done
 
                   if [[ ${arr['api']} ]]; then echo "##vso[task.setvariable variable=BuildAPI;isOutput=true]True"; fi
-                  if [[ ${arr['angular']} ]]; then echo "##vso[task.setvariable variable=BuildAngular;isOutput=true;]True"; fi
+                  if [[ ${arr['ui']} ]]; then echo "##vso[task.setvariable variable=BuildAngular;isOutput=true;]True"; fi
       name: affected
       displayName: get affected apps 
    
